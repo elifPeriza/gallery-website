@@ -6,7 +6,13 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    
+    colors: {
+      turquoise: "#03DAC6",
+      purple: "#BB92FC",
+      darkgrey: "#3C4042",
+      white: "#F2F5F7",
+      darkblue:"#242A59"
+      },
     extend: {
     },
   },
