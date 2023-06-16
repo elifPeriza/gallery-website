@@ -15,7 +15,7 @@ module.exports = {
       },
     extend: {
       fontFamily: {
-         sans: ['var(--font-roboto-mono)'],
+         sans: ['var(--font-roboto-flex)'],
          serif: ['var(--font-fraunces)']
       }
     },
