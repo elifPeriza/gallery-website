@@ -1,9 +1,10 @@
+import Header from "./components/Header";
 
 
 export default function Home() {
   return (
-    <main >
-      <h1 className="text-turquoise" >moment</h1>
+    <main className="mx-auto px-[5%] max-w-[1600px]">
+     <Header/>
     </main>
   )
 }
