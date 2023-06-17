@@ -1,9 +1,11 @@
-
+import Gallery from "./components/Gallery";
+import Header from "./components/Header";
 
 export default function Home() {
   return (
-    <main >
-      <h1 className="text-turquoise" >moment</h1>
+    <main className="mx-auto max-w-[1600px] px-[5%]">
+      <Header />
+      <Gallery />
     </main>
-  )
+  );
 }

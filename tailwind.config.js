@@ -14,6 +14,10 @@ module.exports = {
       darkblue:"#242A59"
       },
     extend: {
+      fontFamily: {
+         sans: ['var(--font-roboto-flex)'],
+         serif: ['var(--font-fraunces)']
+      }
     },
   },
   plugins: [],
