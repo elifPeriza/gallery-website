@@ -3,7 +3,6 @@ import photos from "../../../../photos";
 
 // params => { params: { id: '1' }, searchParams: {} }
 export default function Page({ params }: { params: { id: string } }) {
-  console.log(params.id);
   const photo = photos.find((photo) => photo.id === params.id);
 
   return (
