@@ -7,7 +7,7 @@ export default function Gallery() {
     <div className="grid grid-cols-2 grid-rows-3 gap-2 md:grid-cols-3 lg:gap-4">
       {photos.map(({ id, imageSrc }) => {
         return (
-          <Link href={`/photos/${id}`}>
+          <Link key={id} href={`/photos/${id}`}>
             <img src={imageSrc} className="aspect-square object-cover" />
           </Link>
         );
