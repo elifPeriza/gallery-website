@@ -1,7 +1,7 @@
 import { fraunces } from "../fonts";
 import Button from "./Button";
 
-export default function Header() {
+export default function Header({ withButton }: { withButton: boolean }) {
   return (
     <header className="flex flex-row justify-between py-6">
       <h1
@@ -9,7 +9,7 @@ export default function Header() {
       >
         moment
       </h1>
-      <Button variant="gradient">+ neues Bild</Button>
+      {withButton && <Button variant="gradient">+ neues Bild</Button>}
     </header>
   );
 }

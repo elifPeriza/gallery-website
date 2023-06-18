@@ -4,7 +4,7 @@ import Header from "./components/Header";
 export default function Home() {
   return (
     <main className="mx-auto max-w-[1600px] px-[5%]">
-      <Header />
+      <Header withButton={true} />
       <Gallery />
     </main>
   );
