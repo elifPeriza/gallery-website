@@ -4,7 +4,7 @@ import { roboto_flex } from "@/app/fonts";
 
 export default function ImageUploadPage() {
   return (
-    <div className="max-auto max-w-[1600px] px-[5%]">
+    <div className="mx-auto max-w-[1600px] px-[5%]">
       <Header withButton={false} />
       <div className="mx-auto flex max-w-[500px] flex-col gap-6 p-3">
         <h2
