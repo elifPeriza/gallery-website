@@ -1,6 +1,7 @@
 import Button from "@/app/components/Button";
 import Header from "@/app/components/Header";
 import { roboto_flex } from "@/app/fonts";
+import ImageSelect from "../components/ImageSelect";
 import TagField from "../components/TagField";
 
 export default function ImageUploadPage() {
@@ -13,7 +14,7 @@ export default function ImageUploadPage() {
         >
           Neues Bild
         </h2>
-        <div className="h-[250px] rounded-sm bg-darkgrey"></div>
+        <ImageSelect />
         <div>
           <TagField />
         </div>
