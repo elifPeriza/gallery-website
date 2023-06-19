@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Tag from "./Tag";
+import { roboto_flex } from "../fonts";
 
 type Tags = string[];
 
@@ -44,19 +45,23 @@ export default function TagField() {
       )}
       {showInput && (
         <div className="flex flex-row">
-          <input
-            type="text"
-            value={tagInput}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            autoFocus={true}
-          ></input>
-          <button
-            className="bg-white px-2 py-1 text-black"
-            onClick={() => setShowInput(false)}
-          >
-            x
-          </button>
+          <div className="relative">
+            <input
+              type="text"
+              value={tagInput}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              autoFocus={true}
+              className={`${roboto_flex.variable} rounded-lg border-2 border-purple bg-darkgrey px-4 py-1 font-sans font-medium text-white`}
+            ></input>
+            <button
+              className={`absolute -right-2 -top-2 flex h-[24px] w-[24px] cursor-pointer 
+            items-center justify-center rounded-full bg-red text-sm font-semibold`}
+              onClick={() => setShowInput(false)}
+            >
+              x
+            </button>
+          </div>
         </div>
       )}
     </div>
