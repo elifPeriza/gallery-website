@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import photos from "../../../photos";
 
@@ -8,7 +7,12 @@ export default function Gallery() {
       {photos.map(({ id, imageSrc }) => {
         return (
           <Link key={id} href={`/photos/${id}`}>
-            <img src={imageSrc} className="aspect-square object-cover" />
+            <div>
+              <img
+                src={imageSrc}
+                className="aspect-square w-full object-cover"
+              />
+            </div>
           </Link>
         );
       })}
