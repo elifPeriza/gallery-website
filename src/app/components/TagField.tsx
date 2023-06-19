@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Tag from "./Tag";
 
 type Tags = string[];
 
@@ -22,14 +23,16 @@ export default function TagField() {
     }
   };
 
+  const onTagClose = (tagIndex: number) => {
+    setTags((previousTags) => previousTags.filter((_, i) => i !== tagIndex));
+  };
+
   return (
     <div>
       {tags.length > 0 && (
-        <div className="flex flex-wrap gap-5">
-          {tags.map((tag) => (
-            <p className="text-white" key={tag}>
-              {tag}
-            </p>
+        <div className="mb-3 flex flex-wrap gap-5    ">
+          {tags.map((tag, i) => (
+            <Tag key={i} onTagClose={onTagClose} tagIndex={i} tag={tag} />
           ))}
         </div>
       )}
