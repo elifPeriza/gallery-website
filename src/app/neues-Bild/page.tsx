@@ -8,7 +8,7 @@ export default function ImageUploadPage() {
   return (
     <div className="mx-auto max-w-[1600px] px-[5%]">
       <Header withButton={false} />
-      <div className="mx-auto flex max-w-[500px] flex-col gap-6 p-3">
+      <div className="mx-auto flex max-w-[600px] flex-col gap-6 p-3">
         <h2
           className={`${roboto_flex.variable} self-center font-sans text-base font-semibold text-white`}
         >
