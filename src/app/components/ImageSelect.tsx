@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useDropzone } from "react-dropzone";
+import { roboto_flex } from "../fonts";
 
 export default function ImageSelect() {
   const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
@@ -10,25 +11,34 @@ export default function ImageSelect() {
         "image/png": [],
         "image/webp": [],
       },
+      maxFiles: 1,
+      multiple: false,
+      maxSize: 10_000_000,
     });
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.name}>{file.name}</li>
-  ));
+  const errorMessages: Record<string, string> = {
+    "file-too-large": "Die Datei ist zu groß. Maximale Größe: 10MB",
+    "file-invalid-type": "Falscher Dateityp",
+  };
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-    <li key={file.name} className="text-[#EA9AA8]">
+    <li
+      key={file.name}
+      className={`${roboto_flex.variable} text-sans text-base text-[#EA9AA8]`}
+    >
       {`Datei abgelehnt: `}
       <ul>
         {errors.map((e) => (
-          <li key={e.code}>{e.message}</li>
+          <li key={e.code}>{errorMessages[e.code]}</li>
         ))}
       </ul>
     </li>
   ));
-  console.log(files);
+
   return (
-    <section className="flex h-[250px] flex-col items-center rounded-sm bg-darkgrey p-6">
+    <section
+      className={`${roboto_flex.variable} text-sans flex min-h-[250px] flex-col items-center rounded-sm bg-darkgrey p-6`}
+    >
       <div
         {...getRootProps({
           className:
@@ -36,18 +46,18 @@ export default function ImageSelect() {
         })}
       >
         <input {...getInputProps()} />
-        <h3 className="  text-center text-white ">
-          Drag 'n' drop oder klicke, um Datei auszuwählen
+        <h3 className={"text-center text-white "}>
+          Ziehe eine einzelne Bilddatei hierher oder klicke, um eine auszuwählen
         </h3>
         <p className="text-center text-sm text-lightgrey">
           Unterstützte Dateitypen: png, jpeg, webp
         </p>
       </div>
       <aside className="mt-4 text-center text-white">
-        {!fileRejectionItems.length && acceptedFiles.length > 0 && (
+        {fileRejections.length === 0 && acceptedFiles.length > 0 && (
           <>
             <h4>Bildname</h4>
-            <ul>{files}</ul>
+            <p>{acceptedFiles[0].name}</p>
           </>
         )}
         <ul>{fileRejectionItems}</ul>
