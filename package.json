@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate:sqlite --out db/migrations --schema db/schema.ts",
+    "db:migrate": "node db/migrate.mjs",
+    "db:update": "npm run db:generate && npm run db:migrate"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
