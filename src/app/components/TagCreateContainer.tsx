@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Tag from "./Tag";
 import { roboto_flex } from "../fonts";
+import TagCreate from "./TagCreate";
 
 type Tags = string[];
 
-export default function TagField() {
+export default function TagCreateContainer() {
   const [tags, setTags] = useState<Tags>([]);
   const [tagInput, setTagInput] = useState("");
   const [showInput, setShowInput] = useState(false);
@@ -33,7 +33,12 @@ export default function TagField() {
       {tags.length > 0 && (
         <div className="mb-3 flex flex-wrap gap-5    ">
           {tags.map((tag, i) => (
-            <Tag key={i} onTagClose={onTagClose} tagIndex={i} tag={tag} />
+            <TagCreate
+              key={i}
+              onTagClose={onTagClose}
+              tagIndex={i}
+              name={tag}
+            />
           ))}
         </div>
       )}

@@ -1,19 +1,43 @@
 import Header from "@/app/components/Header";
-import photos from "../../../../photos";
+import { db } from "../../../../db/drizzle";
+import { images } from "../../../../db/schema";
+import { eq } from "drizzle-orm";
+import TagDisplay from "@/app/components/TagDisplay";
 
-// params => { params: { id: '1' }, searchParams: {} }
-export default function Page({ params }: { params: { id: string } }) {
-  const photo = photos.find((photo) => photo.id === params.id);
+const getImage = async (id: string) => {
+  const imageWithTags = await db.query.images.findFirst({
+    where: eq(images.id, parseInt(id, 10)),
+    with: {
+      tagsToImages: {
+        columns: {},
+        with: { tag: { columns: { name: true, id: true } } },
+      },
+    },
+  });
+
+  return imageWithTags;
+};
+
+export const revalidate = 60;
+
+export default async function Page({ params }: { params: { id: string } }) {
+  const image = await getImage(params.id);
 
   return (
     <div className="mx-auto max-w-[1600px] px-[5%]">
-      <Header />
+      <Header withButton={false} />
       <div className=" mx-auto mt-20 flex max-w-screen-md flex-col items-center gap-6">
         <img
-          src={photo?.imageSrc}
+          src={image?.url as string}
           className="max-h-[650px] object-contain md:max-h-[750px]"
         />
-        <p className="text-white">tag tag tag</p>
+        <div className="flex flex-wrap gap-3">
+          {image?.tagsToImages &&
+            image.tagsToImages.length > 0 &&
+            image.tagsToImages.map(({ tag }) => (
+              <TagDisplay key={tag.name} name={tag.name as string} />
+            ))}
+        </div>
       </div>
     </div>
   );

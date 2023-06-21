@@ -2,7 +2,8 @@ import Button from "@/app/components/Button";
 import Header from "@/app/components/Header";
 import { roboto_flex } from "@/app/fonts";
 import ImageSelect from "../components/ImageSelect";
-import TagField from "../components/TagField";
+
+import TagCreateContainer from "../components/TagCreateContainer";
 
 export default function ImageUploadPage() {
   return (
@@ -16,7 +17,7 @@ export default function ImageUploadPage() {
         </h2>
         <ImageSelect />
         <div>
-          <TagField />
+          <TagCreateContainer />
         </div>
         <div className="flex h-[150px] flex-col justify-evenly gap-6 rounded-sm bg-darkgrey px-6 py-4">
           <div>

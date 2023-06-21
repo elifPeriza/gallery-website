@@ -1,15 +1,30 @@
 import Link from "next/link";
-import photos from "../../../photos";
+import { db } from "../../../db/drizzle";
+import { images } from "../../../db/schema";
+import { isNotNull } from "drizzle-orm";
 
-export default function Gallery() {
+const getImages = async () => {
+  const allImages = await db
+    .select()
+    .from(images)
+    .where(isNotNull(images.url))
+    .all();
+  return allImages;
+};
+
+export const revalidate = 60;
+
+export default async function Gallery() {
+  const images = await getImages();
+
   return (
     <div className="grid grid-cols-2 grid-rows-3 gap-2 md:grid-cols-3 lg:gap-4">
-      {photos.map(({ id, imageSrc }) => {
+      {images.map(({ id, url }) => {
         return (
           <Link key={id} href={`/photos/${id}`}>
             <div>
               <img
-                src={imageSrc}
+                src={url as string}
                 className="aspect-square w-full object-cover"
               />
             </div>

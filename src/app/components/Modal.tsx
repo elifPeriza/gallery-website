@@ -1,8 +1,15 @@
 "use client";
 import { Dialog } from "@headlessui/react";
 import { useRouter } from "next/navigation";
+import TagDisplay from "./TagDisplay";
 
-export default function Modal({ src }: { src: string | undefined }) {
+export default function Modal({
+  src,
+  tags,
+}: {
+  src: string;
+  tags?: { tag: { id: string; name: string | null } }[];
+}) {
   const router = useRouter();
   const handleClose = () => {
     router.back();
@@ -26,7 +33,13 @@ export default function Modal({ src }: { src: string | undefined }) {
             </div>
 
             <div className="border border-t-darkgrey bg-black px-6 py-4">
-              <p className="text-white">tag tag tag</p>
+              <div className="flex flex-wrap gap-3">
+                {tags &&
+                  tags.length > 0 &&
+                  tags.map(({ tag }) => (
+                    <TagDisplay key={tag.id} name={tag.name as string} />
+                  ))}
+              </div>
             </div>
           </div>
         </Dialog.Panel>

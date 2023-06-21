@@ -1,11 +1,11 @@
 import { roboto_flex } from "../fonts";
 
-export default function Tag({
-  tag,
+export default function TagCreate({
+  name,
   tagIndex,
   onTagClose,
 }: {
-  tag: string;
+  name: string;
   tagIndex: number;
   onTagClose: (tagIndex: number) => void;
 }) {
@@ -14,10 +14,11 @@ export default function Tag({
       <div
         className={`${roboto_flex.variable} rounded-lg border-2 border-purple px-4 py-1 font-sans font-medium text-white`}
       >
-        {tag}
+        {name}
       </div>
+
       <button
-        onClick={() => onTagClose(tagIndex)}
+        onClick={() => onTagClose?.(tagIndex)}
         aria-label="Delete Tag"
         className={`absolute -right-2 -top-2 flex h-[24px] w-[24px] cursor-pointer 
         items-center justify-center rounded-full bg-red text-sm font-semibold`}
