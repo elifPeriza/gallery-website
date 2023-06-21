@@ -62,7 +62,10 @@ export default function TagCreateContainer() {
             <button
               className={`absolute -right-2 -top-2 flex h-[24px] w-[24px] cursor-pointer 
             items-center justify-center rounded-full bg-red text-sm font-semibold`}
-              onClick={() => setShowInput(false)}
+              onClick={() => {
+                setShowInput(false);
+                setTagInput("");
+              }}
             >
               x
             </button>
