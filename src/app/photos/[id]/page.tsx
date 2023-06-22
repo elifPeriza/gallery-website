@@ -26,10 +26,10 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="mx-auto max-w-[1600px] px-[5%]">
       <Header withButton={false} />
-      <div className=" mx-auto mt-20 flex max-w-screen-md flex-col items-center gap-6">
+      <div className=" mx-auto mt-20 flex max-w-screen-lg flex-col items-center gap-6">
         <img
           src={image?.url as string}
-          className="max-h-[650px] object-contain md:max-h-[750px]"
+          className="max-h-[70vh] object-contain "
         />
         <div className="flex flex-wrap gap-3">
           {image?.tagsToImages &&
