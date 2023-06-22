@@ -1,9 +1,22 @@
-export default function TagDisplay({ name }: { name: string }) {
+import Link from "next/link";
+
+export default function TagDisplay({
+  name,
+  href,
+  onClick,
+}: {
+  name: string;
+  href: string;
+  onClick?: () => void;
+}) {
   return (
-    <div className="relative">
-      <div className="rounded-lg border-2 border-purple px-4 py-1 font-sans font-medium text-white">
+    <Link href={href}>
+      <button
+        onClick={onClick}
+        className=" cursor-pointer rounded-lg border-2 border-purple px-4 py-1 font-sans font-medium text-white"
+      >
         {name}
-      </div>
-    </div>
+      </button>
+    </Link>
   );
 }

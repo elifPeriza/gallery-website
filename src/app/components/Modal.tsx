@@ -1,6 +1,6 @@
 "use client";
 import { Dialog } from "@headlessui/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import TagDisplay from "./TagDisplay";
 
 export default function Modal({
@@ -15,8 +15,14 @@ export default function Modal({
     router.back();
   };
 
+  const path = usePathname();
+
   return (
-    <Dialog open={true} onClose={handleClose} className="relative z-50">
+    <Dialog
+      open={path.startsWith("/photos")}
+      onClose={handleClose}
+      className="relative z-50"
+    >
       {/* The backdrop, rendered as a fixed sibling to the panel container */}
       <div className="fixed inset-0 bg-white/30" aria-hidden="true" />
 
@@ -37,7 +43,11 @@ export default function Modal({
                 {tags &&
                   tags.length > 0 &&
                   tags.map(({ tag }) => (
-                    <TagDisplay key={tag.id} name={tag.name as string} />
+                    <TagDisplay
+                      key={tag.id}
+                      name={tag.name as string}
+                      href={`/tags/${tag.name}`}
+                    />
                   ))}
               </div>
             </div>

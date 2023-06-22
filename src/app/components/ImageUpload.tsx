@@ -190,7 +190,9 @@ export default function ImageUpload() {
           </div>
           <div className="flex h-[90px] flex-col justify-evenly gap-6 rounded-sm bg-darkgrey px-6 py-4">
             <div className="flex flex-row justify-between">
-              <Button variant="transparent">Abbrechen</Button>
+              <Button variant="transparent" href="/" target="_self">
+                Abbrechen
+              </Button>
               <Button
                 disabled={isUploading}
                 variant="turquoise"

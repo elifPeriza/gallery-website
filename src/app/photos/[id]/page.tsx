@@ -35,7 +35,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           {image?.tagsToImages &&
             image.tagsToImages.length > 0 &&
             image.tagsToImages.map(({ tag }) => (
-              <TagDisplay key={tag.name} name={tag.name as string} />
+              <TagDisplay
+                key={tag.name}
+                name={tag.name as string}
+                href={`/tags/${tag.name}`}
+              />
             ))}
         </div>
       </div>
