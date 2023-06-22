@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const image = await getImage(params.id);
 
   return (
-    <div className="mx-auto max-w-[1600px] px-[5%]">
+    <>
       <Header withButton={false} />
       <div className=" mx-auto mt-20 flex max-w-screen-lg flex-col items-center gap-6">
         <img
@@ -39,6 +39,6 @@ export default async function Page({ params }: { params: { id: string } }) {
             ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }

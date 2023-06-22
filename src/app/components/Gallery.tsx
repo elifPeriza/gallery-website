@@ -3,21 +3,12 @@ import { db } from "../../../db/drizzle";
 import { images } from "../../../db/schema";
 import { desc, isNotNull } from "drizzle-orm";
 
-const getImages = async () => {
-  const allImages = await db
-    .select()
-    .from(images)
-    .where(isNotNull(images.url))
-    .orderBy(desc(images.createdAt))
-    .all();
-  return allImages;
+type GalleryProps = {
+  images: { id: number; url: string | null; createdAt: string | null }[];
 };
 
-export const revalidate = 60;
 
-export default async function Gallery() {
-  const images = await getImages();
-
+export default async function Gallery({ images }: GalleryProps) {
   return (
     <div className="grid grid-cols-2 grid-rows-3 gap-2 md:grid-cols-3 lg:gap-4">
       {images.map(({ id, url }) => {

@@ -4,7 +4,7 @@ import ImageUpload from "../components/ImageUpload";
 
 export default function ImageUploadPage() {
   return (
-    <div className="mx-auto max-w-[1600px] px-[5%]">
+    <>
       <Header withButton={false} />
       <div className="mx-auto flex max-w-[600px] flex-col gap-6 p-3">
         <h2
@@ -14,6 +14,6 @@ export default function ImageUploadPage() {
         </h2>
         <ImageUpload />
       </div>
-    </div>
+    </>
   );
 }
