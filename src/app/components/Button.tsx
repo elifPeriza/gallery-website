@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { roboto_flex } from "../fonts";
 
 type ButtonProps = {
   variant: "gradient" | "turquoise" | "transparent" | "gray" | "disabled";
@@ -30,7 +29,7 @@ export default function Button({
 }: ButtonProps) {
   const buttonElement = (
     <button
-      className={`${roboto_flex.variable}  ${
+      className={`${
         disabled ? variants["disabled"] : variants[variant]
       } h-[36px] cursor-pointer rounded-[5px] px-[0.6rem] py-1 font-sans text-base font-semibold leading-3 
 ${

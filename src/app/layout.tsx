@@ -17,7 +17,7 @@ export default function RootLayout(props: {
   return (
     <html lang="en">
       <body className={`${roboto_flex.variable} ${fraunces.variable}`}>
-        <main className="mx-auto max-w-[1600px] px-[5%]">
+        <main className="mx-auto max-w-[1600px] px-[5%] font-sans">
           {props.children} {props.modal}
         </main>
       </body>

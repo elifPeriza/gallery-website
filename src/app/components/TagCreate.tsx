@@ -1,5 +1,3 @@
-import { roboto_flex } from "../fonts";
-
 export default function TagCreate({
   name,
   tagIndex,
@@ -12,7 +10,7 @@ export default function TagCreate({
   return (
     <div className="relative">
       <div
-        className={`${roboto_flex.variable} rounded-lg border-2 border-purple px-4 py-1 font-sans font-medium text-white`}
+        className={` rounded-lg border-2 border-purple px-4 py-1 font-sans font-medium text-white`}
       >
         {name}
       </div>

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { roboto_flex } from "../fonts";
 import Button from "./Button";
 import TagCreate from "./TagCreate";
 import { useUploadThing } from "./UploadthingHelpers";
@@ -65,10 +64,7 @@ export default function ImageUpload() {
   };
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-    <li
-      key={file.name}
-      className={`${roboto_flex.variable} text-sans text-base text-[#EA9AA8]`}
-    >
+    <li key={file.name} className={` text-base text-[#EA9AA8]`}>
       {`Datei abgelehnt: `}
       <ul>
         {errors.map((e) => (
@@ -101,7 +97,7 @@ export default function ImageUpload() {
         <>
           {/* Image Select */}
           <section
-            className={`${roboto_flex.variable} text-sans flex min-h-[250px] flex-col items-center rounded-sm bg-darkgrey p-6`}
+            className={`flex min-h-[250px] flex-col items-center rounded-sm bg-darkgrey p-6`}
           >
             {imageFile && (
               <div className="relative h-[350px] w-full md:h-[450px] ">
@@ -176,7 +172,7 @@ export default function ImageUpload() {
                     onChange={handleTagInputChange}
                     onKeyDown={handleKeyDown}
                     autoFocus={true}
-                    className={`${roboto_flex.variable} rounded-lg border-2 border-purple bg-darkgrey px-4 py-1 font-sans font-medium text-white`}
+                    className={`rounded-lg border-2 border-purple bg-darkgrey px-4 py-1 font-medium text-white`}
                   ></input>
                   <button
                     className={`absolute -right-2 -top-2 flex h-[24px] w-[24px] cursor-pointer 

@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Header withButton={false} />
+      <Header withButton={true} />
       <div className=" mx-auto mt-20 flex max-w-screen-lg flex-col items-center gap-6">
         <img
           src={image?.url as string}
