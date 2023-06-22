@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { db } from "../../../db/drizzle";
 import { images } from "../../../db/schema";
-import { isNotNull } from "drizzle-orm";
+import { desc, isNotNull } from "drizzle-orm";
 
 const getImages = async () => {
   const allImages = await db
     .select()
     .from(images)
     .where(isNotNull(images.url))
+    .orderBy(desc(images.createdAt))
     .all();
   return allImages;
 };
