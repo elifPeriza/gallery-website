@@ -61,6 +61,8 @@ export const ourFileRouter = {
 
       revalidatePath("/");
 
+      tagsToInsert.forEach(({ name }) => revalidatePath(`/tags/${name}`));
+
       const tagsToImageToInsert = tagsToInsert.map((tagToInsert) => ({
         imageId: imageDB[0].id,
         tagId: tagToInsert.id,
