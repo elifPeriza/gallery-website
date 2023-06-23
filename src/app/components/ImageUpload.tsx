@@ -224,7 +224,7 @@ export default function ImageUpload() {
                     src={imageFile?.preview}
                     className="mx-auto max-h-[60vh] object-contain  "
                   ></img>
-                  <div className=" absolute inset-0 flex flex-col items-center justify-center gap-6 bg-black/50 text-lg font-semibold  text-white ">
+                  <div className=" absolute inset-0 flex flex-col items-center justify-center gap-6 bg-black/50 font-sans text-lg font-semibold  text-white ">
                     {isUploading ? (
                       "Das Bild wird hochgeladen..."
                     ) : (
