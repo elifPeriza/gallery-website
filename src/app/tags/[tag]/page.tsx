@@ -14,7 +14,11 @@ const getImagesByTagId = async (tag: string) => {
     },
   });
 
-  return imagesbyTagID.map((imageByTagID) => imageByTagID.image);
+  return imagesbyTagID
+    .map((imageByTagID) => imageByTagID.image)
+    .sort((a, b) =>
+      a.createdAt && b.createdAt && a.createdAt < b.createdAt ? 1 : -1
+    );
 };
 
 export const revalidate = 60;
