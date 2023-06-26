@@ -234,6 +234,7 @@ export default function ImageUpload() {
                           onClick={() => {
                             URL.revokeObjectURL(imageFile?.preview);
                             router.push("/");
+                            router.refresh();
                           }}
                           variant="turquoise"
                         >
