@@ -2,13 +2,16 @@
 import { Dialog } from "@headlessui/react";
 import { usePathname, useRouter } from "next/navigation";
 import TagDisplay from "./TagDisplay";
+import Button from "./Button";
 
 export default function Modal({
   src,
   tags,
+  imageId,
 }: {
   src: string;
   tags?: { tag: { id: string; name: string | null } }[];
+  imageId: string;
 }) {
   const router = useRouter();
   const handleClose = () => {
@@ -38,17 +41,24 @@ export default function Modal({
               />
             </div>
 
-            <div className="border border-t-darkgrey bg-black px-6 py-4">
-              <div className="flex flex-wrap gap-3">
-                {tags &&
-                  tags.length > 0 &&
-                  tags.map(({ tag }) => (
-                    <TagDisplay
-                      key={tag.id}
-                      name={tag.name as string}
-                      href={`/tags/${tag.name}`}
-                    />
-                  ))}
+            <div className="border border-t-darkgrey bg-black px-3 py-4 md:px-6">
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-wrap gap-3">
+                  {tags &&
+                    tags.length > 0 &&
+                    tags.map(({ tag }) => (
+                      <TagDisplay
+                        key={tag.id}
+                        name={tag.name as string}
+                        href={`/tags/${tag.name}`}
+                      />
+                    ))}
+                </div>
+                <div className="ml-2 min-w-[85px] self-end">
+                  <a href={`/photos/${imageId}`}>
+                    <Button variant="transparent">Zum Bild</Button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

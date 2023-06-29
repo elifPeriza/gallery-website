@@ -26,5 +26,11 @@ export default async function PhotoModal({
 }) {
   const image = await getImage(params.id);
 
-  return <Modal src={image?.url as string} tags={image?.tagsToImages} />;
+  return (
+    <Modal
+      imageId={params.id}
+      src={image?.url as string}
+      tags={image?.tagsToImages}
+    />
+  );
 }

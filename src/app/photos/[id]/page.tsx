@@ -2,7 +2,8 @@ import Header from "@/app/components/Header";
 import { db } from "../../../../db/drizzle";
 import { images } from "../../../../db/schema";
 import { eq } from "drizzle-orm";
-import TagDisplay from "@/app/components/TagDisplay";
+
+import ImageFrame from "@/app/components/ImageFrame";
 
 const getImage = async (id: string) => {
   const imageWithTags = await db.query.images.findFirst({
@@ -18,6 +19,7 @@ const getImage = async (id: string) => {
   return imageWithTags;
 };
 
+
 export const revalidate = 60;
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -26,23 +28,10 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <>
       <Header withButton={true} />
-      <div className=" mx-auto mt-20 flex max-w-screen-lg flex-col items-center gap-6">
-        <img
-          src={image?.url as string}
-          className="max-h-[70vh] object-contain "
-        />
-        <div className="flex flex-wrap gap-3">
-          {image?.tagsToImages &&
-            image.tagsToImages.length > 0 &&
-            image.tagsToImages.map(({ tag }) => (
-              <TagDisplay
-                key={tag.name}
-                name={tag.name as string}
-                href={`/tags/${tag.name}`}
-              />
-            ))}
-        </div>
-      </div>
+
+      {image && <ImageFrame image={image} />}
+
+      
     </>
   );
 }
