@@ -19,6 +19,7 @@ export default function ImageUpload() {
   const [tagInput, setTagInput] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [imageFile, setImageFile] = useState<FileWithPreview | null>(null);
+  const [isImageSelected, setIsImageSelected] = useState(false);
   const { fileRejections, getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/jpeg": [],
@@ -29,6 +30,7 @@ export default function ImageUpload() {
     multiple: false,
     maxSize: 10_000_000,
     onDropAccepted: ([acceptedFile]) => {
+      setIsImageSelected(false);
       setImageFile(
         Object.assign(acceptedFile, {
           preview: URL.createObjectURL(acceptedFile),
@@ -56,6 +58,16 @@ export default function ImageUpload() {
 
   const onTagClose = (tagIndex: number) => {
     setTags((previousTags) => previousTags.filter((_, i) => i !== tagIndex));
+  };
+
+  const handleUploadClick = () => {
+    if (!imageFile) {
+      setIsImageSelected(true);
+      return;
+    }
+
+    imageFile && startUpload([imageFile], { tags: tagsObject });
+    setIsOpen(true);
   };
 
   const errorMessages: Record<string, string> = {
@@ -188,6 +200,12 @@ export default function ImageUpload() {
               </div>
             )}
           </div>
+
+          {isImageSelected && (
+            <p className="text-center text-lightred">
+              Bitte wähle erst ein Bild aus.
+            </p>
+          )}
           <div className="flex h-[90px] flex-col justify-evenly gap-6 rounded-sm bg-darkgrey px-6 py-4">
             <div className="flex flex-row justify-between">
               <Button variant="transparent" href="/" target="_self">
@@ -196,10 +214,7 @@ export default function ImageUpload() {
               <Button
                 disabled={isUploading}
                 variant="turquoise"
-                onClick={() => {
-                  imageFile && startUpload([imageFile], { tags: tagsObject });
-                  setIsOpen(true);
-                }}
+                onClick={handleUploadClick}
               >
                 Bild veröffentlichen
               </Button>
