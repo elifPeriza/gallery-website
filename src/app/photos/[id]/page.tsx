@@ -15,10 +15,12 @@ const getImage = async (id: string) => {
       },
     },
   });
+  if (!imageWithTags) {
+    throw new Error("Image not found");
+  }
 
   return imageWithTags;
 };
-
 
 export const revalidate = 60;
 
@@ -30,8 +32,6 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Header withButton={true} />
 
       {image && <ImageFrame image={image} />}
-
-      
     </>
   );
 }
