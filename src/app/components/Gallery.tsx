@@ -1,12 +1,8 @@
 import Link from "next/link";
-import { db } from "../../../db/drizzle";
-import { images } from "../../../db/schema";
-import { desc, isNotNull } from "drizzle-orm";
 
 type GalleryProps = {
   images: { id: number; url: string | null; createdAt: string | null }[];
 };
-
 
 export default async function Gallery({ images }: GalleryProps) {
   return (
@@ -18,6 +14,7 @@ export default async function Gallery({ images }: GalleryProps) {
               <img
                 src={url as string}
                 className="aspect-square w-full object-cover"
+                role="img"
               />
             </div>
           </Link>

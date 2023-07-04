@@ -12,6 +12,7 @@ export default function TagDisplay({
   return (
     <Link href={href}>
       <button
+        data-testid="tag"
         onClick={onClick}
         className=" cursor-pointer rounded-lg border-2 border-purple px-4 py-1 font-sans font-medium text-white"
       >

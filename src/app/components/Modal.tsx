@@ -27,7 +27,11 @@ export default function Modal({
       className="relative z-50"
     >
       {/* The backdrop, rendered as a fixed sibling to the panel container */}
-      <div className="fixed inset-0 bg-white/30" aria-hidden="true" />
+      <div
+        data-testid="modalbackdrop"
+        className="fixed inset-0 bg-white/30"
+        aria-hidden="true"
+      />
 
       {/* Full-screen container to center the panel */}
       <div className="fixed inset-0 flex items-center justify-center p-4">
