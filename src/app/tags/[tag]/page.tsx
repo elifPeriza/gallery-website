@@ -1,10 +1,18 @@
 import { eq } from "drizzle-orm";
 import { db } from "../../../../db/drizzle";
-import { images, tagsToImages } from "../../../../db/schema";
+import { tagsToImages } from "../../../../db/schema";
 import Gallery from "@/app/components/Gallery";
 import Header from "@/app/components/Header";
 
 const getImagesByTagId = async (tag: string) => {
+  const tagExists = await db.query.tagsToImages.findFirst({
+    where: eq(tagsToImages.tagId, tag),
+  });
+
+  if (!tagExists) {
+    throw new Error("No such tag");
+  }
+
   const imagesbyTagID = await db.query.tagsToImages.findMany({
     where: eq(tagsToImages.tagId, tag),
     with: {
