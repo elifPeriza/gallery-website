@@ -29,7 +29,7 @@ export default function Modal({
       {/* The backdrop, rendered as a fixed sibling to the panel container */}
       <div
         data-testid="modalbackdrop"
-        className="fixed inset-0 bg-white/30"
+        className="fixed inset-0 bg-white/10"
         aria-hidden="true"
       />
 

@@ -92,7 +92,7 @@ export default function ImageFrame({ image }: ImageFrameProps) {
           onClose={() => setShowDeleteModal(false)}
           className="relative z-50"
         >
-          <div className="fixed inset-0 bg-white/30" aria-hidden="true" />
+          <div className="fixed inset-0 bg-white/10" aria-hidden="true" />
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <Dialog.Panel className="flex min-h-[200px] min-w-[450px] flex-col items-center gap-6 rounded-sm bg-black p-8 font-sans text-white ">
               <Dialog.Title className="text-lg font-semibold">
